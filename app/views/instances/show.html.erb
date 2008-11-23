@@ -1,0 +1,31 @@
+<div id='title'>
+  <h1>Mission control</h1>
+  <span class='location'>instance status &middot; <%= link_to 'home', :controller => :home %></span>
+</div>
+<div id='info'>
+  <strong><%= @instance.name %></strong> &middot; <%= @instance.id %>
+  
+  <div class='item'>
+    <table width='100%'>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Status</th>
+          <th>Modified at</th>          
+        </tr>
+      </thead>
+      <% for job in @jobs %>
+        <tr>
+          <td><%= job.name %></td>
+          <td><%= job.status %></td>
+          <td><%= job.updated_at.to_formatted_s :short%></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  
+  <div class='item'>
+    <%= link_to '&#9760; Terminate instance', { :action => :destroy, :id => @instance.id }, :confirm => "Are you sure? All running processes will be stopped." %>
+  </div>
+  
+</div>

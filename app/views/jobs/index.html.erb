@@ -1,0 +1,33 @@
+<div id='title'>
+  <h1>Mission control</h1>
+  <span class='location'>Job status &middot; <%= link_to 'home', :controller => :home %></span>
+</div>
+<div id='info'>
+  <% if @jobs.empty? %>
+    No dataset selected.
+  <% else %>
+  <div class='item'>
+    <p>
+      <%= pluralize @pending_jobs.size, "object" %> pending.
+    </p>
+    <% form_tag :action => :submit do %>
+      <table width='100%'>
+        <%= render :partial => "job", :collection => @pending_jobs, :locals => { :select => true } %>
+      </table>
+      <br />
+      <%= submit_tag "Submit" %>
+    <% end %>
+  <% end %>
+  </div>
+  <div class='item'>
+  <p>
+    <%= pluralize @working_jobs.size, "object" %> working.
+  </p>
+  <table width='100%'>
+    <%= render :partial => "job", :collection => @working_jobs, :locals => { :select => false } %>
+  </table>
+  </div>
+</div>
+<div id='status'>
+  <%= link_to 'Pull the plug ', { :controller => :jobs, :action => :unplug }, :confirm => "This will terminate all running instances. Are you sure, Dave?"%> &middot; <%= link_to 'Create from S3 &rarr;', :action => :from_s3 %>
+</div>

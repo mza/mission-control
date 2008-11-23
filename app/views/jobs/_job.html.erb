@@ -1,0 +1,9 @@
+<tr>
+  <% if select %>
+    <td><%= check_box :objects, job.name %></td>
+  <% else %>
+  <% end %>
+  <td><%= job.name %></td>
+  <td><%= job.status %></td>
+  <td><%= job.allocated_instance %></td>
+</tr>

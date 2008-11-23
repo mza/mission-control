@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <%= stylesheet_link_tag "screen" %>
+  <%= javascript_include_tag :defaults %>
+	<title>Mission Control</title>	
+</head>
+
+<body>
+
+  <div id='title'>
+    <h1>Mission control</h1>
+    <span class='location'><%= pluralize @instances.size, "instance" %> &middot; <%= link_to 'jobs', :controller => :jobs %></span>
+  </div>
+  
+  <div id='status'>
+    <%= render :partial => 'status', :locals => { :pending => @pending.size, :submitted => @submitted.size, :working => @working.size, :complete => @complete.size, :progress => @progress }%>
+  </div>
+  
+  <%= periodically_call_remote(:url => url_for(:action => :status), :frequency => '3', :update => 'status') %>
+  
+  <div class='message'>
+    Utilisation: <%= @working.size %> of <%= @capacity %> objects. 
+    <% if @capacity > @working.size %>
+      <%= link_to 'Queue jobs &rarr;', :controller => :jobs %>
+    <% elsif @capacity == @working.size %>
+      Operating at capacity.
+    <% elsif @capacity < @working.size %>
+      Operating above capacity. Fire up more instances.
+    <% end %>
+  </div>
+  
+  <div id='info'>
+    <table width='100%'>
+      <% for instance in @instances %>
+      <tr>
+        <td><%= instance[:dns_name].blank? ? "Reserved: #{instance[:aws_reservation_id]}" : link_to(instance[:dns_name], :controller => :instances, :action => :show, :id => prefix_for(instance[:dns_name])) %></td>
+        <td><%= instance[:aws_availability_zone] %></td>
+        <td><%= instance[:aws_instance_type] %></td>
+        <% if Job.running_count_for_instance(instance[:dns_name]) < 2 %>
+          <td class='running under'><%= Job.running_count_for_instance instance[:dns_name] %> running</td>
+        <% else %>
+          <td class='running'><%= Job.running_count_for_instance instance[:dns_name] %> running</td>
+        <% end %>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</body>
+</html>

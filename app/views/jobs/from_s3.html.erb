@@ -1,0 +1,15 @@
+<div id='title'>
+  <h1>Mission control</h1>
+  <span class='location'>Create from S3</span>
+</div>
+<div id='info'>
+  <% form_remote_tag :url => { :action => :bucket }, :update => "objects" do %>
+    Bucket name: <%= text_field :bucket, :name, :value => "sanger_fastq" %>
+    <%= submit_tag "Find"%>
+  <% end %>
+  <div id='objects'>
+  </div>
+</div>
+<div id='status'>
+  <%= link_to '&larr; Cancel', :action => :index %>
+</div>

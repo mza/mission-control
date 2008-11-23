@@ -1,0 +1,14 @@
+<div>
+  <% form_tag :action => :create do %>
+  <br />
+  <%= submit_tag "Create dataset" %>
+  <br />
+  <ul>
+    <% for object in @objects %>
+      <li><%= check_box :objects, object.to_s, { :checked => true } %> <%= object %></li>
+    <% end %>
+  </ul>
+  <% end %>
+  <%= submit_tag "Create dataset" %>
+  <br />
+</div>
