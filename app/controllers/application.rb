@@ -1,7 +1,7 @@
 # Filters added to this controller apply to all controllers in the application.
 # Likewise, all the methods added will be available for all controllers.
 
-require 'right_aws'
+# require 'right_aws'
 
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
@@ -14,24 +14,17 @@ class ApplicationController < ActionController::Base
   # Uncomment this to filter the contents of submitted sensitive data parameters
   # from your application log (in this case, all fields with names like "password"). 
   # filter_parameter_logging :password
-  
-  settings = YAML.load(File.open("#{Rails.root}/config/aws.yml")).symbolize_keys
-  EC2 = RightAws::Ec2.new(settings[:access_key_id], settings[:secret_access_key])
-  SQS = RightAws::SqsGen2.new(settings[:access_key_id], settings[:secret_access_key])
-  S3 = RightAws::S3.new(settings[:access_key_id], settings[:secret_access_key])
-  
-  Instance.ec2 = EC2
-  
+      
   def ec2
-    EC2
+    AWS.ec2
   end
   
   def sqs
-    SQS
+    AWS.sqs
   end
   
   def s3
-    S3
+    AWS.s3
   end
     
 end
