@@ -4,9 +4,31 @@ Mission Control
 Mission Control is a simple web application for monitoring and managing distributed computational
 tasks using Amazon Web Services.
 
+
+Getting started
+---------------
+
+Mission Control is packaged as a Rails application. Download it, and configure a few settings:
+
+- config/aws.yml, for your AWS credentials (a config/aws_default.yml template is provided)
+- config/database.yml
+
+Next up, resolve any possible gem dependencies and migrate the database:
+
+sudo rake gems:install
+rake db:migrate
+
+
+
+License
+-------
+
 Mission Control is an open source project, available under the MIT license (see doc/license.txt).
 
 The latest version of the Mission Control source code is available here:
 + http://github.com/mza/mission-control
 
 Matt Wood : greenisgood.co.uk : 2008
+
+
+

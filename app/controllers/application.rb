@@ -16,15 +16,15 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password
       
   def ec2
-    AWS.ec2
+    Amazon.ec2
   end
   
   def sqs
-    AWS.sqs
+    Amazon.sqs
   end
   
   def s3
-    AWS.s3
+    Amazon.s3
   end
     
 end
