@@ -60,3 +60,7 @@ div.container {
 	width: 760px;
 }
 
+div#content {
+	margin-left: 150px;
+	padding: 5px;
+}
