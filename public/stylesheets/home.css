@@ -1,6 +1,8 @@
 body {
 	background: #282828;
 	color: #efefef;
+	margin: 0px;
+	padding: 0px;
 }
 
 div#logo {
@@ -52,4 +54,12 @@ a, a:link, a:visited {
 
 a:hover {
 	text-decoration: underline;
+}
+
+div#footer {
+	margin-top: 140px;
+	background: #fff;
+	text-align: center;
+	padding: 10px;
+	border-top: 2px solid #000;
 }
