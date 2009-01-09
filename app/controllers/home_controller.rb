@@ -2,11 +2,20 @@ class HomeController < ApplicationController
     
   before_filter :login_required, :except => :home
   layout 'home', :except => :home
+
+  require 'capistrano/configuration'
   
   def home
   end
   
   def dashboard
+    config = Capistrano::Configuration.new
+    config.load "standard"
+    config.load "deploy"
+    config.load "config/deploy"
+    config.task_list(:all).each do |task|
+      logger.debug "TASK: #{task.name}"
+    end
   end
   
   def index
