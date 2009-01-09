@@ -1,1 +1,1 @@
-# VehicleAssembly
+require 'vehicle_assembly/task'

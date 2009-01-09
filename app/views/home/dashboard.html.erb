@@ -1,12 +1,5 @@
-<div class='container'>
-	<div>
-		<div id='logo'>
-			<%= link_to image_tag("header-logo.gif", :size => "130x91"), houston_url %>
-		</div>
-		<div id='title'>
-			<h1>Mission control</h1>
-			<h2>Hinxton, we have no problem</h2>
-		</div>
-		<br clear='all' />
+<%= render :partial => 'shared/header', :locals => { :title => "Mission control", :subtitle => "Hinxton, we have no problem" } %>
+	<div id='content'>
+		<%= link_to 'Start new mission &rarr;', :controller => :missions, :action => :new %>
 	</div>
-</div>
+<%= render :partial => 'shared/footer' %>
