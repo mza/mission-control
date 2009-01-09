@@ -1,5 +1,8 @@
 class HomeController < ApplicationController
     
+  def dashboard
+  end
+  
   def index
     @instances = ec2.describe_instances
     @job_queue = sqs.queue("jobqueue")
