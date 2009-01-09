@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <%= stylesheet_link_tag "houston" %>
+  <%= stylesheet_link_tag "home" %>
   <%= javascript_include_tag :defaults %>
   <meta http-equiv="refresh" content="<%= @refresh %>">
   
@@ -12,11 +12,15 @@
 </head>
 
 <body>
-	<div id='header'>
-		<div class='container'>
-			<%= link_to 'Sign out', :controller => :sessions, :action => :destroy %>
-		</div>
+	<div id='logo'>
+		<%= image_tag "mission.gif", :size => "392x276" %>
 	</div>
-	<%= yield %>	
+	<div id='title' class='container'>
+		<h1>Mission Control</h1>
+		<h2>Cloud control for distributed computation</h2>
+	</div>
+	<div id='links'>
+		<%= link_to 'Sign in', houston_url %>
+	</div>
 </body>
 </html>

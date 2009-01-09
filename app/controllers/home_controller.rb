@@ -1,5 +1,11 @@
 class HomeController < ApplicationController
     
+  before_filter :login_required, :except => :home
+  layout 'home', :except => :home
+  
+  def home
+  end
+  
   def dashboard
   end
   

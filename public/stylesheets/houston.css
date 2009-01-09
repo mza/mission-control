@@ -10,6 +10,15 @@ img {
 	border: 0px;
 }
 
+div#header a, div#header a:link, div#header a:visited {
+	color: #efefef;
+	text-decoration: none;
+}
+
+div#header a:hover {
+	text-decoration: underline;
+}
+
 h1 {
 	margin: 0px;
 	padding: 0px;
@@ -50,3 +59,4 @@ div.container {
 	margin: 0px auto;
 	width: 760px;
 }
+
