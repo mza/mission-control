@@ -9,7 +9,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090109122835) do
+ActiveRecord::Schema.define(:version => 20090109174501) do
+
+  create_table "instances", :force => true do |t|
+    t.string   "name"
+    t.string   "mission_id"
+    t.string   "specification_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "jobs", :force => true do |t|
     t.string   "name"
@@ -19,9 +27,29 @@ ActiveRecord::Schema.define(:version => 20090109122835) do
     t.datetime "updated_at"
   end
 
+  create_table "missions", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "progresses", :force => true do |t|
     t.string   "node"
     t.integer  "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "specification_items", :force => true do |t|
+    t.string   "name"
+    t.string   "capistrano_task"
+    t.integer  "specification_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "specifications", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

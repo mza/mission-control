@@ -1,5 +1,23 @@
 <%= render :partial => 'shared/header', :locals => { :title => "Start new mission", :subtitle => "Hinxton, we have no problem" } %>
-	<div id='content'>
-		LAUNCH
+<% form_for(:mission, @mission, new_mission_url) do |f| %>
+	<div class='item'>
+		<div class='item_title'>
+			Mission details
+		</div>
+		<div class='item_content'>
+			Name:<br /> <%= f.text_field :name %>
+		</div>	
+		<br clear='all' />	
 	</div>
+
+	<div class='item'>
+		<div class='item_title'>
+			Instances
+		</div>
+		<div class='item_content'>
+			Instance specification
+		</div>	
+		<br clear='all' />	
+	</div>
+<% end %>
 <%= render :partial => 'shared/footer' %>

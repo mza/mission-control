@@ -1,4 +1,7 @@
-class Instance
+class Instance < ActiveRecord::Base
+  
+  belongs_to :mission
+  has_one :specification
   
   cattr_accessor :ec2
   attr_accessor :name, :id

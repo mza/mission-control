@@ -64,3 +64,25 @@ div#content {
 	margin-left: 150px;
 	padding: 5px;
 }
+
+div.item {
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+
+div.item_title {
+	width: 100px;
+	float: left;
+	text-align: right;
+	margin-right: 10px;
+	padding-left: 20px;
+	font-family: georgia;
+	font-style: italic;
+	font-size: 14px;
+}
+
+div.item_content {
+	width: 500px;
+	float: left;
+	padding: 2px 10px 10px 24px;
+}
