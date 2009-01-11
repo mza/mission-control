@@ -15,7 +15,9 @@
 			Instances
 		</div>
 		<div class='item_content'>
-			Instance specification
+			<% if @mission.instances.empty? %>
+				No instances have been scoped. <%= link_to "Prepare the first one &rarr;", :controller => :instances, :action => :new %>
+			<% end %>
 		</div>	
 		<br clear='all' />	
 	</div>

@@ -1,6 +1,11 @@
 class InstancesController < ApplicationController
   
-  layout 'jobs'
+  layout 'home'
+  
+  def new
+    @instance = Instance.new
+    @tasks = VehicleAssembly::Task.all
+  end
   
   def show
     @instance = Instance.new params[:id]

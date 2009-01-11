@@ -1,0 +1,37 @@
+<%= render :partial => 'shared/header', :locals => { :title => "Prepare instance", :subtitle => "Hinxton, we have no problem" } %>
+	<div class='item'>
+		<div class='item_title'>
+			Specification
+		</div>
+		<div class='item_content'>
+			<strong>
+				Select a collection of roles for this instance. When launched, the instance
+				will be bootstrapped to this specification.
+			</strong>
+			<br /><br />
+			<table width='100%'>
+				<tr>
+					<td>
+						Available tasks:
+						<select size='14' style='width: 200px;' id='source'>
+							<% for task in @tasks %>
+								<option><%= task.name %></option>
+							<% end %>
+						</select>
+					</td>
+					<td width='20%' style='text-align: center;'>
+						<%= link_to 'Add &rarr;', "javascript:add_to_select('source', 'specification');" %>
+						<br /><br />			
+						<%= link_to '&larr; Remove', "javascript:add_to_select('specification', 'source');" %>												
+					</td>
+					<td>
+						Specified tasks:
+						<select size='14' style='width: 200px;' id='specification'>
+						</select>
+					</td>
+				</tr>
+			</table>
+		</div>	
+		<br clear='all' />	
+	</div>
+<%= render :partial => 'shared/footer' %>

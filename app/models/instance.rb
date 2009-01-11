@@ -6,9 +6,11 @@ class Instance < ActiveRecord::Base
   cattr_accessor :ec2
   attr_accessor :name, :id
   
-  def initialize(prefix)
-    self.name = prefix + ".compute-1.amazonaws.com"
-    aws_details
+  def initialize(prefix = {})
+    unless prefix.empty?
+      self.name = prefix + ".compute-1.amazonaws.com"
+      aws_details
+    end
   end
   
   def aws_details

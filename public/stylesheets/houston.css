@@ -10,6 +10,11 @@ img {
 	border: 0px;
 }
 
+a, a:link, a:visited {
+	text-decoration: none;
+	color: #0080FF;
+}
+
 div#header a, div#header a:link, div#header a:visited {
 	color: #efefef;
 	text-decoration: none;
