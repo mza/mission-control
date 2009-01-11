@@ -15,6 +15,17 @@ a, a:link, a:visited {
 	color: #0080FF;
 }
 
+a:hover {
+	text-decoration: underline;
+}
+
+th {
+	text-align: left;
+	font-weight: normal;
+	border-bottom: 1px solid #666;
+	color: #7F7F7F;
+}
+
 div#header a, div#header a:link, div#header a:visited {
 	color: #efefef;
 	text-decoration: none;
@@ -70,6 +81,15 @@ div#content {
 	padding: 5px;
 }
 
+div.flash {
+	margin-left: 150px;
+	padding: 5px;
+	background: #4995BE;	
+	color: #fff;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
 div.item {
 	margin-top: 5px;
 	margin-bottom: 10px;
@@ -90,4 +110,22 @@ div.item_content {
 	width: 500px;
 	float: left;
 	padding: 2px 10px 10px 24px;
+}
+
+td.number {
+	text-align: center;
+	font-family: georgia, times, arial;
+	font-size: 32px;
+	color: #30627C;
+}
+
+td.build {
+	text-align: center;
+	font-family: georgia, times, arial;
+	font-size: 12px;
+	
+}
+
+div.spaced {
+	padding-top: 14px;
 }

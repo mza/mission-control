@@ -7,7 +7,7 @@ class HomeController < ApplicationController
   end
   
   def dashboard
-    VehicleAssembly::Task.all
+    @missions = Mission.all
   end
   
   def index

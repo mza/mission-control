@@ -1,0 +1,35 @@
+<div class='item'>
+	<div class='item_title'>
+		Instances
+	</div>
+	<div class='item_content'>
+		<strong>
+			Select the number of instances of each specification to create.
+		</strong>
+		You can always add or remove instances later on.
+		<Br /><br />
+		<% if @specifications.empty? %>
+			No instances have been staged. <%= link_to "Prepare the first one &rarr;", :controller => :instances, :action => :new %>
+		<% else %>
+			<table width='100%'>
+				<thead>
+					<tr>
+						<th>Number</th>
+						<th>Specification</th>
+						<th>Tasks</th>
+					</tr>
+				</thead>
+				<% for specification in @specifications %>
+				<tr>
+					<td><%= text_field :count, specification.id, :value => "0", :size => 3 %></td>
+					<td><%= specification.name %></td>
+					<td><%= truncate specification.snippet %></td>
+				</tr>
+				<% end %>
+			</table>
+			<br />
+			<%= link_to "Add a specification &rarr;", :controller => :instances, :action => :new %>
+		<% end %>
+	</div>	
+	<br clear='all' />	
+</div>

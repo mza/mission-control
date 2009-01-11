@@ -1,16 +1,9 @@
-class Instance < ActiveRecord::Base
-  
-  belongs_to :mission
-  has_one :specification
+class Instance
   
   cattr_accessor :ec2
-  attr_accessor :name, :id
-  
-  def initialize(prefix = {})
-    unless prefix.empty?
-      self.name = prefix + ".compute-1.amazonaws.com"
-      aws_details
-    end
+    
+  def self.launch_with_specification(spec)
+    ec2.run_instances('ami-1f5db976', 1, 1, ['default'], 'gsg-keypair')
   end
   
   def aws_details
@@ -22,7 +15,11 @@ class Instance < ActiveRecord::Base
   end
   
   def ec2
-    self.class.ec2
+    Amazon.ec2
+  end
+  
+  def self.ec2
+    Amazon.ec2
   end
     
 end

@@ -1,0 +1,19 @@
+<%= render :partial => 'shared/header', :locals => { :title => @mission.name, :subtitle => "Hinxton, we have no problem" } %>
+<%= render :partial => 'shared/flashes' %>
+
+	<%= render :partial => 'shared/status', :locals => { :mission => @mission, :name => false }%>
+	<% form_tag url_for({ :controller => :missions, :action => :launch, :id => @mission }), :method => :post do %>
+		<%= render :partial => "shared/specifications" %>
+		<div class='item'>
+			<div class='item_title'>
+				&nbsp;
+			</div>
+			<div class='item_content'>
+				<%= submit_tag "Launch" %> or <%= link_to "cancel", mission_url(@mission) %>
+			</div>	
+			<br clear='all' />	
+		</div>
+	
+	<% end %>
+
+<%= render :partial => 'shared/footer' %>

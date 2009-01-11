@@ -1,4 +1,10 @@
 <%= render :partial => 'shared/header', :locals => { :title => "Mission control", :subtitle => "Hinxton, we have no problem" } %>
+<%= render :partial => 'shared/flashes' %>
+
+	<% for mission in @missions %>
+		<%= render :partial => "shared/status", :locals => { :mission => mission, :name => true }%>
+	<% end %>
+
 	<div id='content'>
 		<%= link_to 'Start new mission &rarr;', :controller => :missions, :action => :new %>
 	</div>

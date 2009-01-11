@@ -1,4 +1,15 @@
 <%= render :partial => 'shared/header', :locals => { :title => "Prepare instance", :subtitle => "Hinxton, we have no problem" } %>
+	<% form_tag "create", :method => :post do |f| %>
+	<div class='item'>
+		<div class='item_title'>
+			Instance details
+		</div>
+		<div class='item_content'>
+			Name:<br /> <%= text_field :instance, :name %>
+		</div>	
+		<br clear='all' />	
+	</div>
+	
 	<div class='item'>
 		<div class='item_title'>
 			Specification
@@ -13,9 +24,9 @@
 				<tr>
 					<td>
 						Available tasks:
-						<select size='14' style='width: 200px;' id='source'>
+						<select size='14' style='width: 200px;' id='source' name='source'>
 							<% for task in @tasks %>
-								<option><%= task.name %></option>
+								<option value='<%= task.name %>'><%= task.name %></option>
 							<% end %>
 						</select>
 					</td>
@@ -26,7 +37,7 @@
 					</td>
 					<td>
 						Specified tasks:
-						<select size='14' style='width: 200px;' id='specification'>
+						<select multiple="multiple" size='14' style='width: 200px;' id='specification' name='specification[tasks][]'>
 						</select>
 					</td>
 				</tr>
@@ -34,4 +45,16 @@
 		</div>	
 		<br clear='all' />	
 	</div>
+	
+	<div class='item'>
+		<div class='item_title'>
+		&nbsp;
+		</div>
+		<div class='item_content'>
+			<%= submit_tag "Save instance" %> or <%= link_to 'cancel', houston_url %>
+		</div>	
+		<br clear='all' />	
+	</div>
+	
+	<% end %>
 <%= render :partial => 'shared/footer' %>
