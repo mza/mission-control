@@ -1,1 +1,1 @@
-require 'vehicle_assembly/task'
+require File.join(File.dirname(__FILE__), "lib/vehicle_assembly")
