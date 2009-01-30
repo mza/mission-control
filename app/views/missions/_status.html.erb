@@ -1,0 +1,26 @@
+<%= render :partial => 'shared/status', :locals => { :mission => @mission, :name => false }%>
+
+<div class='item'>
+	<div class='item_title'>
+		<%= pluralize @instances.size, "instance"%>
+	</div>
+	<div class='item_content'>
+		<table width='100%'>
+	      <% for instance in @instances %>
+	      <tr>
+	        <td><%= instance[:dns_name].blank? ? "Reserved: #{instance[:aws_reservation_id]}" : link_to(instance[:dns_name], :controller => :instances, :action => :show, :id => prefix_for(instance[:dns_name])) %></td>
+	        <td><%= instance[:aws_availability_zone] %></td>
+	        <td><%= instance[:aws_instance_type] %></td>
+	        <% if Job.running_count_for_instance(instance[:dns_name]) < 2 %>
+	          <td class='running under'><%= Job.running_count_for_instance instance[:dns_name] %> running</td>
+	        <% else %>
+	          <td class='running'><%= Job.running_count_for_instance instance[:dns_name] %> running</td>
+	        <% end %>
+	      </tr>
+	      <% end %>
+	    </table>
+	    <br />
+		<%= link_to 'Start new instances &rarr;', :controller => :missions, :action => :start, :id => @mission.id %>
+	</div>	
+	<br clear='all' />	
+</div>
