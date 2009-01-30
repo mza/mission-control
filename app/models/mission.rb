@@ -2,23 +2,23 @@ class Mission < ActiveRecord::Base
   has_many :instances
     
   def pending
-    0
+    Job.pending.size
   end
   
   def submitted
-    0
+    Job.submitted.size
   end
   
   def working
-    0
+    Job.working.size
   end
   
   def complete 
-    0
+    Job.complete.size
   end
   
   def progress
-    0
+    Progress.so_far    
   end
   
 end

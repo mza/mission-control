@@ -9,7 +9,7 @@ class InstancesController < ApplicationController
   
   def create
     # @instance = Instance.new(params[:instance])
-    @specification = Specification.new(:name => "Specification for #{@instance.name}")
+    @specification = Specification.new(:name => params[:specification][:name])
       
     params[:specification][:tasks].each do |task|
       item = SpecificationItem.new( :name => task, :capistrano_task => task)

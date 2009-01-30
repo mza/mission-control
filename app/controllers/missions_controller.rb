@@ -7,6 +7,12 @@ class MissionsController < ApplicationController
     @instances = ec2.describe_instances
   end
   
+  def status
+    @mission = Mission.find(params[:id])
+    @instances = ec2.describe_instances
+    render :partial => "status"
+  end
+  
   def start
     @mission = Mission.find(params[:id])
     @specifications = Specification.all

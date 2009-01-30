@@ -1,18 +1,18 @@
-<%= render :partial => 'shared/header', :locals => { :title => "Prepare instance", :subtitle => "Hinxton, we have no problem" } %>
+<%= render :partial => 'shared/header', :locals => { :title => "Specify instance", :subtitle => "Hinxton, we have no problem" } %>
 	<% form_tag "create", :method => :post do |f| %>
 	<div class='item'>
 		<div class='item_title'>
-			Instance details
+			Specification details
 		</div>
 		<div class='item_content'>
-			Name:<br /> <%= text_field :instance, :name %>
+			Name:<br /> <%= text_field :specification, :name %>
 		</div>	
 		<br clear='all' />	
 	</div>
 	
 	<div class='item'>
 		<div class='item_title'>
-			Specification
+			Roles
 		</div>
 		<div class='item_content'>
 			<strong>

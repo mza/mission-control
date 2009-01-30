@@ -35,7 +35,7 @@ class JobsController < ApplicationController
         end
       end
     end
-    redirect_to :controller => :home, :action => :index
+    redirect_to houston_url
   end
 
   def unplug    
