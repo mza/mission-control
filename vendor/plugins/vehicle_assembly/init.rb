@@ -1,0 +1,1 @@
+require 'vehicle_assembly'

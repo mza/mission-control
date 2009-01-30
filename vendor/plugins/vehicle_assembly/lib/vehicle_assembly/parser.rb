@@ -5,6 +5,6 @@ module VehicleAssembly
       template = ERB.new File.read(filename)
       template.result(binding)
     end
-      
+          
   end
 end
