@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
     
   def index
-    @instances = ec2.describe_instances
+    @instances = Instance.describe
     @job_queue = sqs.queue("jobqueue")
     @pending = Job.pending
     @complete = Job.complete

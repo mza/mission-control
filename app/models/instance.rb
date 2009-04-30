@@ -8,6 +8,11 @@ class Instance
     aws_details
   end
   
+  def self.describe
+    all_instances = ec2.describe_instances
+    all_instances.select {|i| i[:aws_state] == "running" || "reserved"}.select {|i| i[:aws_instance_type] == "m1.large"}.sort_by {|i| i[:aws_availability_zone]}.reverse
+  end
+  
   def aws_details
     ec2.describe_instances.each do |instance|
       if instance[:dns_name] == self.name
