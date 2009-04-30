@@ -1,13 +1,60 @@
-VehicleAssembly
-===============
+Vehicle Assembly
+================
 
-Introduction goes here.
+A small Rails plugin for preparing applications to run on Amazon Web Service's EC2 platform.
+
+Getting started
+---------------
+
+Deploying a Rails application on EC2 is relatively straightforward: Vehicle Assembly aims to 
+automate the process of managing your deployment is a modular way. 
+
++ Preparing for launch: 3, 2, 1...
+
+3. Install the Vehicle Assembly plugin:
+
+./script/plugin install git://github.com/mza/vehicle-assembly.git
+
+2. Place your application under launch control:
+
+rake mission_control:init
+
+This will add a couple of files to your application:
+
+Capfile - a general purpose Capistrano file, no need to customise this
+config/aws.yml - for your AWS credentials
+config/deploy.rb - for your deployment details
+
+1. Customise your setup
+
+Add your Amazon key to the config/aws.yml file, and customise the marked fields in config/deploy.rb. You'll need to set your application name, git username and application URL. 
+
+Finally, add the hostname of the EC2 instance you wish you deploy to. For details on starting an instance, take a look at: http://aws.amazon.com/ec2/
 
 
-Example
-=======
++ Go for launch - begin main engine start...
 
-Example goes here.
+With the details in place, you're good to go. 
+
+Boot strap your instance with Apache, Passenger and MySQL:
+
+cap bootstrap
+
+Then, start your app:
+
+cap webapp:init
+
+Hit up your EC2 instance to check everything is ship shape, and then point your public URL there. We'd recommend adding an Elastic IP to your service.
+
+Rails in the Cloud
+------------------
+
+There are other ways of putting your application in the cloud. We can highly recommend:
+
++ EC2 on Rails: http://ec2onrails.rubyforge.org/
 
 
-Copyright (c) 2009 [name of plugin creator], released under the MIT license
+License
+-------
+
+Copyright (c) 2009 Matt Wood, released under the MIT license

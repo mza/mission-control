@@ -1,14 +1,6 @@
 before "bootstrap:cold", "bootstrap:update_cache"
 after "deploy", "webapp:set_ownership"
 
-namespace :mission_control do
-  
-  task :init do
-    # puts VehicleAssembly::Parser.parse("lib/deploy/templates/aws.erb")
-  end
-  
-end
-
 namespace :bootstrap do
 
   desc "Bootstraps a cold instance"
