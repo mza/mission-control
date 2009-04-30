@@ -1,0 +1,11 @@
+<div id='title'>
+  <h1>Mission control</h1>
+  <span class='location'>extend cluster &middot; <%= link_to 'home', :controller => :home %></span>
+</div>
+<div id='info'>
+	<% form_tag :action => :go do %>
+		Extend cluster by <%= text_field :instance, :number, :size => 10, :value => 5 %> instances.
+		<br /><br />
+		<%= submit_tag "Extend" %> or <%= link_to 'cancel', root_url %>
+	<% end %>
+</div>

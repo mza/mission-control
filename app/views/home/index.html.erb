@@ -13,8 +13,14 @@
 
   <div id='title'>
     <h1>Mission control</h1>
-    <span class='location'><%= pluralize @instances.size, "instance" %> &middot; <%= link_to 'jobs', :controller => :jobs %></span>
+    <span class='location'><%= pluralize @instances.size, "instance" %> &middot; <%= link_to 'jobs', :controller => :jobs %> &middot; <%= link_to 'extend', :controller => :instances, :action => :increase %></span>
   </div>
+
+  <% unless flash[:notice].nil? %>
+  <div class='flash'>
+	<%= flash[:notice] %>
+  </div> 
+  <% end %>
   
   <div id='status'>
     <%= render :partial => 'status', :locals => { :pending => @pending.size, :submitted => @submitted.size, :working => @working.size, :complete => @complete.size, :progress => @progress }%>

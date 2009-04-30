@@ -16,6 +16,11 @@ class Instance
     end
   end
   
+  def self.increase(count = 1)
+    key = ec2.describe_key_pairs.first
+    ec2.run_instances('ami-571efa3e', 1, 1, ['default'], 'gsg-keypair', '', nil, 'm1.large')
+  end
+  
   def ec2
     self.class.ec2
   end

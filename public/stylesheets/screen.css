@@ -118,3 +118,10 @@ a:hover {
 	color: #FFC737;
 	text-decoration: underline;
 }
+
+div.flash {
+	margin-top: 10px;
+	background: #88C8E5;
+	color: #fff;
+	padding: 5px 5px 5px 5px;
+}
